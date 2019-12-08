@@ -8,7 +8,7 @@ class AdjustableWrapContentViewPager(context: Context, attrs: AttributeSet? = nu
     ViewPager(context, attrs) {
 
     private var pageHeightMap = mutableMapOf<Int, Int>()
-    var currentPage = 0
+    private var currentPage = 0
 
     init {
         addOnPageChangeListener(object : OnPageChangeListener {
@@ -25,6 +25,7 @@ class AdjustableWrapContentViewPager(context: Context, attrs: AttributeSet? = nu
             }
 
             override fun onPageSelected(position: Int) {
+                // set currentPage to refresh view
                 currentPage = position
                 requestLayout()
             }
@@ -32,7 +33,7 @@ class AdjustableWrapContentViewPager(context: Context, attrs: AttributeSet? = nu
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-
+        // call onMeasure to create child View
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
         val mode = MeasureSpec.getMode(heightMeasureSpec)
@@ -47,8 +48,10 @@ class AdjustableWrapContentViewPager(context: Context, attrs: AttributeSet? = nu
                 pageHeightMap[i] = child.measuredHeight
             }
 
-            newHeightMeasureSpec =
-                MeasureSpec.makeMeasureSpec(pageHeightMap[currentPage]!!, MeasureSpec.EXACTLY)
+            pageHeightMap[currentPage]?.let {
+                newHeightMeasureSpec =
+                    MeasureSpec.makeMeasureSpec(it, MeasureSpec.EXACTLY)
+            }
 
             if (newHeightMeasureSpec != 0) {
                 super.onMeasure(widthMeasureSpec, newHeightMeasureSpec)
