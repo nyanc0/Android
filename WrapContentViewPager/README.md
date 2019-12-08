@@ -6,7 +6,7 @@
 
 **注意1**  
 各ぺージに表示する`View`の高さを保持するため、  
-`offscreenPageLimit`に表示するページ数を指定することを前提としています。  
+[offscreenPageLimit](https://developer.android.com/reference/android/support/v4/view/ViewPager.html#setOffscreenPageLimit(int))に表示するページ数を指定することを前提としています。  
 そのため、ページ枚数が極端に多い場合や扱うデータが大きい場合は、  
 `OutOfMemory`を引き起こす可能性があるため注意してください。
 
