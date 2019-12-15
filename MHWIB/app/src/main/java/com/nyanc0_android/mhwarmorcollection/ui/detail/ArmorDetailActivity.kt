@@ -3,6 +3,7 @@ package com.nyanc0_android.mhwarmorcollection.ui.detail
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import com.nyanc0_android.mhwarmorcollection.R
@@ -144,8 +145,10 @@ class ArmorDetailActivity : AppCompatActivity() {
             button_fav.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
                     repository.saveFavorite(armor)
+                    Toast.makeText(this@ArmorDetailActivity, "登録しました", Toast.LENGTH_SHORT).show()
                 } else {
                     repository.deleteFavorite(armor)
+                    Toast.makeText(this@ArmorDetailActivity, "削除しました", Toast.LENGTH_SHORT).show()
                 }
             }
         }

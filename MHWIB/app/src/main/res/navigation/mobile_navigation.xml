@@ -19,10 +19,10 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.nyanc0_android.mhwarmorcollection.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_update_photo"
+        android:name="com.nyanc0_android.mhwarmorcollection.ui.updatephoto.UpdatePhotoFragment"
+        android:label="@string/title_update_photo"
+        tools:layout="@layout/fragment_update_photo" />
 
     <fragment
         android:id="@+id/navigation_favorite_list"

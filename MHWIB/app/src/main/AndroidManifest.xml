@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nyanc0_android.mhwarmorcollection">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -19,7 +22,24 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.detail.ArmorDetailActivity"/>
+        <activity android:name=".ui.detail.ArmorDetailActivity" />
+        <activity android:name=".ui.crop.CropActivity" />
+        <activity android:name=".ui.detect.DetectActivity" />
+        <activity android:name=".ui.record.RecordActivity" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_path" />
+        </provider>
+
+        <meta-data
+            android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+            android:value="label" />
     </application>
 
 </manifest>

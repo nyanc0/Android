@@ -29,11 +29,41 @@ class ArmorNameRepository {
         }
     }
 
+    suspend fun fetchRecord(armorNames: List<String>): List<Armor> {
+        return armorNames.filter {
+            it.length > 1
+        }.map {
+            fetchOneAbout(it)
+        }
+    }
+
     private suspend fun fetchOneInternal(armorName: String): Armor = suspendCoroutine {
         val result = mutableListOf<Armor>()
         val db = FirebaseFirestore.getInstance()
         db.collection(COLLECTION_PATH)
             .whereEqualTo(QUERY, armorName)
+            .get()
+            .addOnSuccessListener { snapShot ->
+                for (document in snapShot) {
+                    result.add(mapToArmor(document.data))
+                }
+                it.resume(result[0])
+            }.addOnFailureListener { exception ->
+                it.resumeWithException(exception)
+            }
+    }
+
+    suspend fun fetchOneAbout(armorName: String): Armor {
+        return withContext(Dispatchers.IO) {
+            fetchOneInternalAbout(armorName)
+        }
+    }
+
+    private suspend fun fetchOneInternalAbout(armorName: String): Armor = suspendCoroutine {
+        val result = mutableListOf<Armor>()
+        val db = FirebaseFirestore.getInstance()
+        db.collection(COLLECTION_PATH)
+            .whereLessThanOrEqualTo(QUERY, armorName)
             .get()
             .addOnSuccessListener { snapShot ->
                 for (document in snapShot) {

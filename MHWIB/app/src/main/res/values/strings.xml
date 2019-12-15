@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">MHWArmorCollection</string>
     <string name="title_search">Search</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_update_photo">Update</string>
     <string name="title_favorite">Favorites</string>
 
     <string name="label_search_monster">モンスターから探す</string>
@@ -23,6 +23,11 @@
     <string name="message_no_favorite">登録されているお気に入りはありません。</string>
     <string name="hint_input_armor_name">装備名を入れてください</string>
     <string name="label_search">検索</string>
+    <string name="label_update_camera">写真を撮る</string>
+    <string name="label_update_storage">フィイルから選ぶ</string>
+
+    <string name="cropped_error">トリミングに失敗しました</string>
+    <string name="save_photo_file_name">IMG_%1$s.jpg</string>
 
     <string name="message_empty_armor_text">装備名を入力してください</string>
 </resources>

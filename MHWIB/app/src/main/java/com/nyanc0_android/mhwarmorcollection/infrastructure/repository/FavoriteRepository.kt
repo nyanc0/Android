@@ -52,7 +52,7 @@ class FavoriteRepository(private val context: Context) {
         )
     }
 
-    fun saveFavoriteSet(setName: String, armor: List<Armor>) {
+    fun saveFavoriteSet(setName: String, armor: List<Armor>) = GlobalScope.launch(Dispatchers.IO) {
         val adapter = Moshi.Builder().build().adapter(FavoriteSet::class.java)
         val favorites = armor.map {
             com.nyanc0_android.mhwarmorcollection.infrastructure.model.Favorite(
