@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">MHWArmorCollection</string>
+    <string name="title_search">Search</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_favorite">Favorites</string>
+
+    <string name="label_search_monster">モンスターから探す</string>
+    <string name="label_search_armor">装備名から探す</string>
+    <string name="label_detail_skill">スキル</string>
+    <string name="label_detail_skill_lv">Lv.%1$d</string>
+    <string name="label_detail_slot">スロット</string>
+    <string name="label_detail_slot_num">%1$d - %2$d - %3$d</string>
+    <string name="label_detail_defence">防御力</string>
+    <string name="label_detail_defence_num">%1$d</string>
+    <string name="label_defence_normal">通常強化</string>
+    <string name="label_defence_custom">カスタム強化</string>
+    <string name="label_detail_attribute">属性耐性</string>
+    <string name="label_detail_attribute_name">%1$s属性</string>
+    <string name="label_detail_attribute_lv">%1$d</string>
+    <string name="label_detail_material">素材</string>
+    <string name="label_detail_material_num">× %1$d</string>
+    <string name="message_error_armor">お探しの装備は見つかりませんでした。</string>
+    <string name="message_no_favorite">登録されているお気に入りはありません。</string>
+    <string name="hint_input_armor_name">装備名を入れてください</string>
+    <string name="label_search">検索</string>
+
+    <string name="message_empty_armor_text">装備名を入力してください</string>
+</resources>

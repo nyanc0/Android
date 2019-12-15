@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <Button
+        android:id="@+id/btn_search_monster"
+        style="@style/MHWButton.Primary"
+        android:text="@string/label_search_monster" />
+
+    <Button
+        android:id="@+id/btn_search_armor"
+        style="@style/MHWButton.Primary"
+        android:text="@string/label_search_armor" />
+</LinearLayout>

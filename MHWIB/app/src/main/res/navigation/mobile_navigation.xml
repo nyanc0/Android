@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_search">
+
+    <fragment
+        android:id="@+id/navigation_search"
+        android:name="com.nyanc0_android.mhwarmorcollection.ui.search.SearchFragment"
+        android:label="@string/title_search"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_to_monster_list"
+            app:destination="@id/navigation_monster_list" />
+        <action
+            android:id="@+id/action_to_armor_name_input"
+            app:destination="@+id/navigation_input_armor_name" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.nyanc0_android.mhwarmorcollection.ui.dashboard.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/navigation_favorite_list"
+        android:name="com.nyanc0_android.mhwarmorcollection.ui.favoritelist.FavoriteListFragment"
+        android:label="@string/title_favorite"
+        tools:layout="@layout/fragment_favorite_list" />
+
+    <fragment
+        android:id="@+id/navigation_monster_name_armor_list"
+        android:name="com.nyanc0_android.mhwarmorcollection.ui.armorlist.MonsterNameArmorListFragment"
+        tools:layout="@layout/fragment_monster_name_armor_list" />
+
+    <fragment
+        android:id="@+id/navigation_monster_list"
+        android:name="com.nyanc0_android.mhwarmorcollection.ui.monsterlist.MonsterListFragment"
+        tools:layout="@layout/fragment_monster_list">
+        <action
+            android:id="@+id/action_to_monster_name_armor_list"
+            app:destination="@+id/navigation_monster_name_armor_list" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_input_armor_name"
+        android:name="com.nyanc0_android.mhwarmorcollection.ui.input.InputArmorNameFragment"
+        tools:layout="@layout/fragment_input_armor_name">
+        <action
+            android:id="@+id/action_to_armor_name_armor_list"
+            app:destination="@+id/navigation_armor_name_armor_list" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_armor_name_armor_list"
+        android:name="com.nyanc0_android.mhwarmorcollection.ui.armorlist.ArmorNameArmorListFragment"
+        tools:layout="@layout/fragment_monster_name_armor_list"/>
+</navigation>
