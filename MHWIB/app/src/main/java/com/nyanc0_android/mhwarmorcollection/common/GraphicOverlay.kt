@@ -88,9 +88,21 @@ class GraphicOverlay(context: Context, attrs: AttributeSet) : View(context, attr
         val result = mutableListOf<String>()
         for (graphic in graphics) {
             if (graphic is BoxGraphic) {
-                result.add(graphic.text)
+                result.add(convert(graphic.text))
             }
         }
         return result
+    }
+
+    fun convert(oldText: String) : String {
+//        return oldText.replace("[bｂBＢ]".toRegex(), "β").also {
+//            val result = it.replace("[aａＡAの]".toRegex(), "α")
+//        }.also {
+//            val result = it.replace("[yrｙｒ]".toRegex(), "γ")
+//        }
+
+        val resultB = Regex(pattern = "[bｂdbBＢ]").replace(oldText, "β")
+        val resultA = Regex(pattern = "[aａAＡの]").replace(resultB, "α")
+        return Regex(pattern = "[yｙrｒソｿ]").replace(resultA, "γ")
     }
 }

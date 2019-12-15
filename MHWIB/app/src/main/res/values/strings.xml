@@ -24,7 +24,7 @@
     <string name="hint_input_armor_name">装備名を入れてください</string>
     <string name="label_search">検索</string>
     <string name="label_update_camera">写真を撮る</string>
-    <string name="label_update_storage">フィイルから選ぶ</string>
+    <string name="label_update_storage">ファイルから選ぶ</string>
 
     <string name="cropped_error">トリミングに失敗しました</string>
     <string name="save_photo_file_name">IMG_%1$s.jpg</string>
