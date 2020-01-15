@@ -2,17 +2,14 @@ package com.sample.nyanc0_Android.coroutinesample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        main4()
+        main6()
     }
 
     fun loadData() {
@@ -105,5 +102,37 @@ class MainActivity : AppCompatActivity() {
         println("ThreadName = ${Thread.currentThread().name}")
     }
 
+    private fun main5() {
+        runBlocking {
+            launch(CoroutineName("SampleCoroutine")) {
+                println("${this.coroutineContext}")
+            }
+        }
 
+        GlobalScope.launch {
+            println("${this.coroutineContext}")
+        }
+    }
+
+    var callCounts = 0
+
+    private fun main6() {
+        GlobalScope.launch { completeMessage() }
+        GlobalScope.launch { improveMessage() }
+        println("Hello, ")
+        Thread.sleep(2000L)
+        println("There have been $callCounts calls so far")
+    }
+
+    suspend fun completeMessage() {
+        delay(500L)
+        println("World")
+        callCounts++
+    }
+
+    suspend fun improveMessage() {
+        delay(1000L)
+        println("Suspend functions are cool")
+        callCounts++
+    }
 }

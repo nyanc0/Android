@@ -152,10 +152,67 @@ suspend関数とは、
 |[CoroutineDispatcher](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-coroutine-dispatcher/index.html)([Dispatchers](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-dispatchers/index.html))|処理を実行するスレッドを決定する|
 |[Job](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-job/index.html)|実行する一連の処理単位。CoroutineもJob。|
 |CoroutineBuilder|Coroutineを作成する。CoroutineScopeの拡張関数。|
+|Suspend関数|コルーチンの中でのみ実行することができる処理|
+|Deffered|コルーチンを実行した結果|
 
 <img src="https://github.com/nyanc0/nyanc0_Android/blob/master/Coroutine/image/coroutine1.png?raw=true">
 
+### Scope
+- コルーチンのライフサイクルメソッドを提供する
+- コルーチンの開始/停止をさせる
 
+|||
+|---|---|
+|'GlobalScope.launch()'|アプリケーションのライフサイクルで動く環境を提供する。アプリ全体が終了するまで終了しない。よほど軽量な処理でないかぎり使わない。|
+|'runBlocking'|スレッドをブロックした状態で処理を行う環境を提供する。|
+|'coroutineScope'|新たに処理を実行する環境を作成する。子のコルーチンがすべて完了するまで終了しない。|
+
+### CoroutineContext
+- コルーチンに関わる情報
+- すべてのコルーチンは対応するContextを持つ
+
+CoroutineContextが持つ需要な情報
+- Dispatcher：どのスレッドでコルーチンが実行されるか
+- Job：コルーチンのライフサイクルをコントロールする
+
+```kt
+private fun main5() {
+    runBlocking {
+        launch(CoroutineName("SampleCoroutine")) {
+            println("${this.coroutineContext}")
+        }
+    }
+
+    GlobalScope.launch {
+        println("${this.coroutineContext}")
+    }
+}
+```
+
+実行結果
+```
+// runBlokingにつけたコルーチン名が出ている
+I/System.out: [CoroutineName(SampleCoroutine), StandaloneCoroutine{Active}@26d0d1c, BlockingEventLoop@2154d25]
+// コルーチン名はないが、CoroutineContextは存在している
+I/System.out: [StandaloneCoroutine{Active}@314efa, DefaultDispatcher]
+```
+
+GlobalScopeの中
+```kt
+public object GlobalScope : CoroutineScope {
+    /**
+     * Returns [EmptyCoroutineContext].
+     */
+    override val coroutineContext: CoroutineContext
+        get() = EmptyCoroutineContext
+}
+```
+
+`GlobalScope`が内部的に`CoroutineContext`を生成して持っていることがわかる
+
+### suspend関数
+- コルーチンの中でのみ実行できる関数
+- コールバックをシームレスにしてくれる(内部的にコールバックを作って簡単にして返してくれる)
 
 # 参考
 - http://sys1yagi.hatenablog.com/entry/2018/08/28/000620
